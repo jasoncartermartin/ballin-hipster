@@ -1,6 +1,21 @@
-<h1>Editing wiki</h1>
-
-<%= render 'form' %>
-
+<div class="row">
+  <div class="col-md-6">
+    <p id="notice"><%= notice %></p>
+    <H1>Edit</H1>
+    <%= render 'form' %>
+  </div>
+  <div class="col-md-6">
+    <p id="notice"><%= notice %></p>
+    <H1>Preview</H1>
+      <div class="field">
+        <label>Title</label><br />
+        <input type = "text" value = "Title">
+      </div>
+      <div class="field">
+        <label>Body</label><br />
+        <textarea>Body</textarea>
+      </div>
+  </div>
+</div>
 <%= link_to 'Show', @wiki %> |
 <%= link_to 'Back', wikis_path %>

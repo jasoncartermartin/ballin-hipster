@@ -1,35 +1,21 @@
-<h1>Listing wikis</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Private</th>
-      <th>Image</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @wikis.each do |wiki| %>
-      <tr>
-        <td><%= wiki.title %></td>
-        <td><%= wiki.body %></td>
-        <td><%= wiki.private %></td>
-        <td><%= wiki.image %></td>
-        <td><%= wiki.user_id %></td>
-        <td><%= link_to 'Show', wiki %></td>
-        <td><%= link_to 'Edit', edit_wiki_path(wiki) %></td>
-        <td><%= link_to 'Destroy', wiki, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Wiki', new_wiki_path %>
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="text-center">My Wikis</h1>
+      <table class = "table table-hover table-bordered" id = "wikiTable">
+        <% @wikis.each do |wiki| %>
+          <tr>
+            <td><%= link_to "#{wiki.title}", wiki %></td>
+            <td><%= wiki.body[0,50]%><%= "..." unless wiki.body.length < 50 %></td>
+            <td>
+              <% if wiki.private %>
+                Private
+              <% end %>
+            </td>
+            <td><%= link_to 'Edit', edit_wiki_path(wiki) %></td>
+            <td><%= link_to 'Delete', wiki, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Export', wiki %></td>
+          </tr>
+        <% end %>
+    </table>
+  </div>
+</div>
