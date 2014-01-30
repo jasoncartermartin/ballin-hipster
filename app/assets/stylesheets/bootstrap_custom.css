@@ -1,1 +1,10 @@
 td {font-size:18px;}
+
+.user-info {
+  margin-top: 10px;
+  padding-right: 5px;
+}
+
+.user-info a:visited a:link a:hover a:active a {
+  color: white;
+}

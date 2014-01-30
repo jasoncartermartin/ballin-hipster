@@ -35,3 +35,5 @@ end
 gem 'stripe'
 
 gem 'chosen-rails'
+
+gem 'devise'
