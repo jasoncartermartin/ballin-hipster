@@ -3,7 +3,8 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BallinHipster</title>
-    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <style type="text/css">
       #wikiTable td {
@@ -18,6 +19,19 @@
         background-position: bottom right;
         background-repeat: no-repeat;
       }
+
+      .user-info {
+        margin-top: 10px;
+        padding-right: 5px;
+      }
+
+      .white-text > a:visited {
+        color: white !important;
+      }
+      .white-text > li > a {
+        color: white !important;
+      }
+
     </style>
   </head>
   <body>
@@ -43,6 +57,5 @@
 
         <%= yield %>
       </div>
-      <%= javascript_include_tag "application" %>
   </body>
 </html>

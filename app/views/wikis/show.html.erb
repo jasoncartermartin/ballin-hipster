@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <p id="notice"><%= notice %></p>
     <H1><%= @wiki.title %></H1>
-    <%= @wiki.body %>
+    <%= @markdown.render(@wiki.body).html_safe %>
     <br/><br />
     <%= link_to 'Edit', edit_wiki_path(@wiki) %> |
     <%= link_to 'Back', wikis_path %>

@@ -1,6 +1,8 @@
 class WikisController < ApplicationController
   before_action :set_wiki, only: [:show, :edit, :update, :destroy]
 
+  
+
   # GET /wikis
   # GET /wikis.json
   def index
@@ -10,6 +12,7 @@ class WikisController < ApplicationController
   # GET /wikis/1
   # GET /wikis/1.json
   def show
+    @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true)
   end
 
   # GET /wikis/new
@@ -19,6 +22,7 @@ class WikisController < ApplicationController
 
   # GET /wikis/1/edit
   def edit
+    @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true)
   end
 
   # POST /wikis
