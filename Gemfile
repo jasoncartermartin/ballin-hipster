@@ -39,3 +39,5 @@ gem 'chosen-rails'
 gem 'devise'
 
 gem 'redcarpet'
+
+gem 'pundit'

@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
 
   has_one :subscription
   has_one :plan, through: :subscription
+
+  accepts_nested_attributes_for :subscription, :plan
 end
