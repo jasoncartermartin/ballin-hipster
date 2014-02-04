@@ -25,12 +25,30 @@
   <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
   <%= f.password_field :current_password %></div>
 
-  <div><%= f.label :plan %>(Free or Premium?)<br />
-  <%= f.collection_select :plan, Plan.all, :id, :name %></div>
+  <div>
+    <%= f.label :subscription %> (Free or Premium?)<br />
+    <%= f.fields_for :subscription do |s| %>
+      <%= s.collection_select :plan_id, Plan.all, :id, :name %>
+    <% end %>
+  </div>
+
+  <%#= s.fields_for :plan do |p| %>
+     <%#= p.collection_select :id, Plan.all, :id, :name %>
+  <%# end %>
+
+  <%#= f.collection_select :plan, Plan.all, :id, :name %>
+
+
+  <%#= f.fields_for :susbscription_attributes do |s| %>
+    <%# s.collection_select :plan, Plan.al ... 
+    <% end %>
+  <%# end %>
   <%#= f.collection_select :subscription, :plan_id, Plan.all.order(:name), :id, :name, include_blank: false %>
 
   <%# selected: (current_user.plan.id || 2) %>
   <br />CURRENT USERS PLAN: <%= current_user.plan.id %>
+  <br />CURRENT USERS (SUBSCRIPTION) PLAN: <%= current_user.subscription.plan.id %>
+  <br />Premium? <%= current_user.premium? %>
 
   <div><%= f.submit "Update" %></div>
 <% end %>

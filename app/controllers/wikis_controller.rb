@@ -6,12 +6,13 @@ class WikisController < ApplicationController
   # GET /wikis
   # GET /wikis.json
   def index
-    @wikis = Wiki.all
+    @wikis = Wiki.visible_to(current_user)
   end
 
   # GET /wikis/1
   # GET /wikis/1.json
   def show
+    authorize @wiki
     @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true)
   end
 
@@ -22,6 +23,7 @@ class WikisController < ApplicationController
 
   # GET /wikis/1/edit
   def edit
+    authorize @wiki
     @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true)
   end
 
@@ -58,6 +60,7 @@ class WikisController < ApplicationController
   # DELETE /wikis/1
   # DELETE /wikis/1.json
   def destroy
+    authorize @wiki
     @wiki.destroy
     respond_to do |format|
       format.html { redirect_to wikis_url }
