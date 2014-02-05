@@ -34,7 +34,7 @@ textarea {
   color: white !important;
 }
 
-.alert {
+.alert-error {
   background-color: red;
   font-weight: bold;
 }
