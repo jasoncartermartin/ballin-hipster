@@ -1,1 +1,35 @@
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('/assets/glyphicons-halflings-regular.eot');
+  src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), 
+       url('/assets/lyphicons-halflings-regular.woff') format('woff'), 
+       url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), 
+       url('/assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
 td {font-size:18px;}
+
+#wikiTable td {
+  font-size:18px;
+}
+textarea {
+  width: 500px;
+  height: 120px;
+  border: 3px solid #cccccc;
+  padding: 5px;
+  font-family: Tahoma, sans-serif;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+}
+
+.user-info {
+  margin-top: 10px;
+  padding-right: 5px;
+}
+
+.white-text > a:visited {
+  color: white !important;
+}
+.white-text > li > a {
+  color: white !important;
+}

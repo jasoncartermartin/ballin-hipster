@@ -5,47 +5,31 @@ class WikiPolicy
     @wiki = wiki
   end
 
-  # def update?
-  #   if wiki.private == true
-  #       if user.plan.name == "Premium"
-  #         true
-  #       else
-  #         false
-  #   else
-  #     true
-  #   end
-  # end
-  # end
+  def update?
+    edit?
+  end
 
   def show?
-     if @wiki.private
-         if @user && @user.premium?
-           true
-         else
-           raise "Not authorized to show"
-         end
-     else
-       true
-     end
+    if @wiki.private
+       (@user && @user.premium?) ? true : false
+    else
+     true
+    end
   end
 
   def edit?
-     if @wiki.private
-         if @user && @user.premium?
-           true
-         else
-           raise "Not authorized to edit"
-         end
-     else
-       true
-     end
+    if @wiki.private
+      (@user && @user.premium?) ? true : false
+    else
+      true
+    end
   end
 
   def destroy?
     if @user && (@wiki.user == @user)
       true
     else
-      raise "Not authorized to delete"
+      false
     end
   end
 

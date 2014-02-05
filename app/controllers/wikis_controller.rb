@@ -46,9 +46,28 @@ class WikisController < ApplicationController
   # PATCH/PUT /wikis/1
   # PATCH/PUT /wikis/1.json
   def update
+    authorize @wiki
+    collab_list = params[:wiki][:collab_list] || []
+    params[:wiki].delete :collab_list
+
+    message = ""
+
+    removedCollaborators = @wiki.collaborators.all - @wiki.collaborators.where(user_id: collab_list)
+    
+    removedCollaborators.each do |r|
+      message << r.user.email + " has been removed as a collaborator, "
+      r.delete
+    end
+
+    collab_list.each do |c|
+      if (c != " " && c != "")
+        @wiki.collaborators.find_or_create_by(user_id: c) 
+      end
+    end
+    
     respond_to do |format|
       if @wiki.update(wiki_params)
-        format.html { redirect_to @wiki, notice: 'Wiki was successfully updated.' }
+        format.html { redirect_to @wiki, notice: "Record saved! #{message}" }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -76,6 +95,6 @@ class WikisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wiki_params
-      params.require(:wiki).permit(:title, :body, :private, :image, :user_id)
+      params.require(:wiki).permit(:title, :body, :private, :image, :user_id, collab_list: params[:collab_list])
     end
 end

@@ -5,10 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_one :subscription
-  has_one :plan, through: :subscription
+  #has_one :plan, through: :subscription
   has_many :wikis
 
-  accepts_nested_attributes_for :subscription, :plan
+  accepts_nested_attributes_for :subscription
 
   def premium?
     if self.subscription.plan.name == "Premium"
@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
     else
       false
     end
+  end
+
+  def plan
+    self.subscription.plan
   end
 
   def name?

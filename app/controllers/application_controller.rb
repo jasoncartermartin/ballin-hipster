@@ -9,27 +9,25 @@ class ApplicationController < ActionController::Base
 
   #after_action :verify_authorized, :except => :index ## This raises an error for every action that isn't authorized
 
-  #rescue_from Exception, :with => :render_404
+  rescue_from Pundit::NotAuthorizedError, with: :not_authorized
 
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << [:username, :name, :email] 
     #devise_parameter_sanitizer.for(:account_update) << [:username, :name, subscription_attributes: [:id, :plan_id]]
-    devise_parameter_sanitizer.for(:account_update) << [:username, :name, :email, subscription_attributes: [:id, :plan_id, plan_attributes: [:id, :name]]]
-    
-
-    # devise_parameter_sanitizer.for( :account_update ) do |u|
-    #   u.permit :email, :password, :username, :name, :current_password, :password_confirmation, :first_name, :last_name, subscription_attributes: [:plan_id, :subscription_id]
-    # end
-
+    devise_parameter_sanitizer.for(:account_update) << [:username, 
+                                                        :name, 
+                                                        :email, 
+                                                        subscription_attributes: [:id, :plan_id, 
+                                                                                  plan_attributes: [:id, :name]]]
   end
 
-  #private
+  private
 
-  #def render_404(exception = nil)
-    #logger.info "Exception, redirecting: #{exception.message}" if exception
-    #render(:action => :index)
-  #end
+  def not_authorized
+    flash[:error] = "You are not authorized to do this!"
+    redirect_to request.headers["Referer"] || root_path
+  end
 
 end

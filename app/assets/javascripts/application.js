@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
-//= require chosen-jquery
+//= require bootstrap
 //= require scaffold
+//= require chosen-jquery
+//= require_tree .
