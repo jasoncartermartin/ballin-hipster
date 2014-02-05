@@ -46,10 +46,11 @@
   <%#= f.collection_select :subscription, :plan_id, Plan.all.order(:name), :id, :name, include_blank: false %>
 
   <%# selected: (current_user.plan.id || 2) %>
-  <br />CURRENT USERS PLAN: <%= current_user.plan.id %>
-  <br />CURRENT USERS (SUBSCRIPTION) PLAN: <%= current_user.subscription.plan.id %>
-  <br />Premium? <%= current_user.premium? %>
-
+  <!-- <br />CURRENT USERS PLAN: <%#= current_user.plan.id %>
+  <br />CURRENT USERS (SUBSCRIPTION) PLAN: <%#= current_user.subscription.plan.id %>
+  <br />Premium? <%#= current_user.premium? %>
+ -->
+  <br />
   <div><%= f.submit "Update" %></div>
 <% end %>
 

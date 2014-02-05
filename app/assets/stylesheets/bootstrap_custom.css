@@ -33,3 +33,8 @@ textarea {
 .white-text > li > a {
   color: white !important;
 }
+
+.alert {
+  background-color: red;
+  font-weight: bold;
+}

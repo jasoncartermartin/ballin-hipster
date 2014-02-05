@@ -30,12 +30,33 @@ class WikisController < ApplicationController
   # POST /wikis
   # POST /wikis.json
   def create
+    
+    collab_list = params[:wiki][:collab_list] || []
+    params[:wiki].delete :collab_list
+    
     @wiki = Wiki.new(wiki_params)
+    @wiki.user_id = current_user.id
+    
+    message = ""
 
     respond_to do |format|
       if @wiki.save
+          removedCollaborators = @wiki.collaborators.all - @wiki.collaborators.where(user_id: collab_list)
+          
+          removedCollaborators.each do |r|
+            message << r.user.email + " has been removed as a collaborator, "
+            r.delete
+          end
+
+          collab_list.each do |c|
+            if (c != " " && c != "")
+              @wiki.collaborators.find_or_create_by(user_id: c) 
+            end
+          end
+
         format.html { redirect_to @wiki, notice: 'Wiki was successfully created.' }
         format.json { render action: 'show', status: :created, location: @wiki }
+
       else
         format.html { render action: 'new' }
         format.json { render json: @wiki.errors, status: :unprocessable_entity }

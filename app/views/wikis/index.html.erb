@@ -1,18 +1,31 @@
 <div class="row">
   <div class="col-md-12">
-    <h1 class="text-center">My Wikis</h1>
+    <h1 class="text-center">Wikis</h1>
       <table class = "table table-hover table-bordered" id = "wikiTable">
         <% @wikis.each do |wiki| %>
           <tr>
             <td>
               <% if wiki.private %>
-                Private
+                <span class="glyphicon glyphicon-eye-close"></span>
+              <% else %>
+                <span class="glyphicon glyphicon-eye-open"></span>
               <% end %>
-              <%= link_to "#{wiki.title}", wiki %></td>
+            </td>
+            <td>
+              <%= link_to "#{wiki.title}", wiki %>
+            </td>
             <td><%= wiki.body[0,50]%><%= "..." unless wiki.body.length < 50 %></td>
             <td><%= wiki.user.email %></td>
-            <td><%= link_to 'Edit', edit_wiki_path(wiki) %></td>
-            <td><%= link_to 'Delete', wiki, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td>
+              <%= link_to edit_wiki_path(wiki) do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to wiki, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <span class="glyphicon glyphicon-trash"></span>
+              <% end %>
+            </td>
           </tr>
         <% end %>
     </table>

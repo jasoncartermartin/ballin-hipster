@@ -18,10 +18,14 @@ class WikiPolicy
   end
 
   def edit?
-    if @wiki.private
-      (@user && @user.premium?) ? true : false
+    if ( (@wiki.user_id == @user.id) || (@wiki.collaborators.find_by_user_id(@user.id)) ) 
+      if @wiki.private
+        (@user && @user.premium?) ? true : false
+      else
+        true
+      end
     else
-      true
+      false
     end
   end
 
