@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :subscription
 
   def premium?
-    if self.subscription.plan.name == "Premium"
+    if self.subscription && self.subscription.plan.name == "Premium"
       true
     else
       false
