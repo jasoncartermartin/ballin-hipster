@@ -1,7 +1,8 @@
 class SubscriptionsController < ApplicationController
 
   def create
-    current_user.subscription = Subscription.new(plan_id: 3, user_id: current_user.id)
+    #raise
+    current_user.subscription = Subscription.new(plan_id: 3, user_id: current_user.id, stripe_card_token: params[:subscription][:stripe_card_token])
     if current_user.subscription.save
       flash[:notice] = "Successfully upgraded to Premium plan!"
       redirect_to root_path

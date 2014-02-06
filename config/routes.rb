@@ -11,5 +11,7 @@ BallinHipster::Application.routes.draw do
 
   resources :collaborators
 
+  resources :charges
+
   root to: 'wikis#index'
 end

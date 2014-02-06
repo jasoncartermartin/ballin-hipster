@@ -71,7 +71,7 @@ class WikisController < ApplicationController
     collab_list = params[:wiki][:collab_list] || []
     params[:wiki].delete :collab_list
 
-    message = ""
+    message = "" 
 
     removedCollaborators = @wiki.collaborators.all - @wiki.collaborators.where(user_id: collab_list)
     
@@ -118,4 +118,6 @@ class WikisController < ApplicationController
     def wiki_params
       params.require(:wiki).permit(:title, :body, :private, :image, :user_id, collab_list: params[:collab_list])
     end
+    #params.require(:wiki).permit(:title, :body, :user_id, :private, collaborators_attributes: [collaborator: [:user_id]])
+  end
 end
