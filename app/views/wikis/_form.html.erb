@@ -7,8 +7,7 @@
   end
 %>
 <div class="row">
-  <div class="col-md-6">
-    <H1>Edit</H1>
+  <div class="col-md-12">
     <%= form_for(@wiki) do |f| %>
       <% if @wiki.errors.any? %>
         <div id="error_explanation">
@@ -22,15 +21,16 @@
       <% end %>
       <div class="field">
         <%= f.label :title %><br>
-        <%= f.text_field :title %>
+        <%= f.text_field :title, size: 100 %>
       </div>
-      <div class="field">
-        <%= f.label :body %><br>
+      <%= f.label :body %>
+      <div class = "field" id="epiceditor" style="border:1px solid black">  
+      </div>
+      <div class="field" style="display:none">
         <%= f.text_area :body, id: :wiki_body %>
       </div>
       <div class="field">
-        <%= f.label :private %><br>
-        <%= f.check_box :private %>
+        <%= f.label :private %>: <%= f.check_box :private %>
       </div>
       <div class="field">
         <%= f.label :image %><br>
@@ -38,18 +38,6 @@
       </div>
       <div class="field">
         Created by: <i><%= @created_by %></i>
-      </div>
-  </div>
-  <div class="col-md-6">
-    <p id="notice"><%= notice %></p>
-    <H1>Preview</H1>
-      <div class="field">
-        <label>Title</label><br />
-        <input type = "text" value = "Title">
-      </div>
-      <div class="field">
-        <label>Body</label><br />
-        <textarea id = "wiki_body_preview">Body</textarea>
       </div>
   </div>
 </div>
@@ -63,10 +51,5 @@
     </div>
     <br />
    <% end %>
-  </div>
-</div>
-<div class = "row">
-  <div class = "col-md-12" id="epiceditor">
-    Epic Editor!
   </div>
 </div>

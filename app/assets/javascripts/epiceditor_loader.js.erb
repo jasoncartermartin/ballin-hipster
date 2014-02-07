@@ -1,8 +1,8 @@
 var opts = {
   container: 'epiceditor',
-  textarea: null,
+  textarea: 'wiki_body',
   basePath: 'epiceditor',
-  clientSideStorage: true,
+  clientSideStorage: false,
   localStorageName: 'epiceditor',
   useNativeFullscreen: true,
   parser: marked,
@@ -13,7 +13,7 @@ var opts = {
   },
   theme: {
     base: "http://localhost:3000/assets/themes/base/epiceditor.css",
-    preview: "http://localhost:3000/assets/themes/preview/preview-dark.css",
+    preview: "http://localhost:3000/assets/themes/preview/github.css",
     editor: "http://localhost:3000/assets/themes/editor/epic-dark.css"
   },
   button: {
@@ -32,7 +32,11 @@ var opts = {
     toggleEdit: 'Toggle Edit Mode',
     toggleFullscreen: 'Enter Fullscreen'
   },
-  autogrow: true
+  autogrow: { 
+    minHeight: 80, 
+    maxHeight: 600,
+    scroll: true
+  }
 }
 
 $(document).ready(function() {
