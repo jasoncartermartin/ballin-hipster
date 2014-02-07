@@ -16,4 +16,6 @@
 //= require scaffold
 //= require chosen-jquery
 //= require 'epiceditor'
+//= require cssua
+//= require skeuocard
 //= require_tree .
