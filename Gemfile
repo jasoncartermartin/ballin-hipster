@@ -38,3 +38,5 @@ gem 'devise'
 gem 'redcarpet'
 
 gem 'pundit'
+
+gem 'epic-editor-rails' # GEM for markdown editing and live preview

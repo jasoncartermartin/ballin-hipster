@@ -119,5 +119,4 @@ class WikisController < ApplicationController
       params.require(:wiki).permit(:title, :body, :private, :image, :user_id, collab_list: params[:collab_list])
     end
     #params.require(:wiki).permit(:title, :body, :user_id, :private, collaborators_attributes: [collaborator: [:user_id]])
-  end
 end

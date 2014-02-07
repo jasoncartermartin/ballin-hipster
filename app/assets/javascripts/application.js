@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require scaffold
 //= require chosen-jquery
+//= require 'epiceditor'
 //= require_tree .
