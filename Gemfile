@@ -42,3 +42,5 @@ gem 'pundit'
 gem 'epic-editor-rails' # GEM for markdown editing and live preview
 
 gem 'skeuocard-rails'
+
+gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+

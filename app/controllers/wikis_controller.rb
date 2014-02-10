@@ -1,5 +1,5 @@
 class WikisController < ApplicationController
-  before_action :set_wiki, only: [:show, :edit, :update, :destroy]
+  before_action :set_wiki, only: [:edit, :update, :destroy]
 
   
 
@@ -12,6 +12,10 @@ class WikisController < ApplicationController
   # GET /wikis/1
   # GET /wikis/1.json
   def show
+    @wiki = Wiki.friendly.find(params[:id])
+    if request.path != wiki_path(@wiki)
+      redirect_to @wiki, status: :moved_permanently
+    end
     authorize @wiki
     @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, fenced_code_blocks: true)
   end
@@ -108,10 +112,14 @@ class WikisController < ApplicationController
     end
   end
 
+  def should_generate_new_friendly_id?
+    true
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_wiki
-      @wiki = Wiki.find(params[:id])
+      @wiki = Wiki.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
