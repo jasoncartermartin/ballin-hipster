@@ -41,5 +41,6 @@ var opts = {
 
 $(document).ready(function() {
   //var editor = new EpicEditor().load();
-  var editor = new EpicEditor(opts).load();
+  if ($("#epiceditor").length)
+    var editor = new EpicEditor(opts).load();
 });
