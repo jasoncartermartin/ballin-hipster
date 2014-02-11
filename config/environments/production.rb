@@ -1,5 +1,10 @@
 BallinHipster::Application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
+
+  # Required because of epic editor CSS Bugs
+
+  ENV['epic__base_theme'] = "https://wiki-on-rails.herokuapp.com/assets/themes/base/epiceditor.css"
+  ENV['epic__editor_theme'] = "https://wiki-on-rails.herokuapp.com/assets/themes/editor/epic-dark.css"
+  ENV['epic__preview_theme'] = "https://wiki-on-rails.herokuapp.com/assets/themes/preview/github.css"
 
   # Code is not reloaded between requests.
   config.cache_classes = true

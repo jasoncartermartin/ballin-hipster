@@ -12,9 +12,9 @@ var opts = {
     autoSave: 100
   },
   theme: {
-    base: "http://localhost:3000/assets/themes/base/epiceditor.css",
-    preview: "http://localhost:3000/assets/themes/preview/github.css",
-    editor: "http://localhost:3000/assets/themes/editor/epic-dark.css"
+    base: "<%= ENV['epic__base_theme'] %>",
+    preview: "<%= ENV['epic__preview_theme'] %>",
+    editor: "<%= ENV['epic__editor_theme'] %>"
   },
   button: {
     preview: true,
@@ -40,7 +40,6 @@ var opts = {
 }
 
 $(document).ready(function() {
-  //var editor = new EpicEditor().load();
   if ($("#epiceditor").length)
     var editor = new EpicEditor(opts).load();
 });

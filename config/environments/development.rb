@@ -1,6 +1,12 @@
 BallinHipster::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+
+  # Required because of epic editor CSS Bugs
+  ENV['epic__base_theme'] = "http://localhost:3000/assets/themes/base/epiceditor.css"
+  ENV['epic__editor_theme'] = "http://localhost:3000/assets/themes/editor/epic-dark.css"
+  ENV['epic__preview_theme'] = "http://localhost:3000/assets/themes/preview/github.css"
+
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
