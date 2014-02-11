@@ -30,6 +30,11 @@ textarea {
 .white-text > a:visited {
   color: white !important;
 }
+
+.white-text > a {
+  color: white !important;
+}
+
 .white-text > li > a {
   color: white !important;
 }
