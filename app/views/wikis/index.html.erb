@@ -16,16 +16,18 @@
             </td>
             <td><%= wiki.body[0,50]%><%= "..." unless wiki.body.length < 50 %></td>
             <td><%= wiki.user.email %></td>
-            <td>
-              <%= link_to edit_wiki_path(wiki) do %>
-                <span class="glyphicon glyphicon-pencil"></span>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to wiki, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                <span class="glyphicon glyphicon-trash"></span>
-              <% end %>
-            </td>
+            <% if current_user %>
+              <td>
+                <%= link_to edit_wiki_path(wiki) do %>
+                  <span class="glyphicon glyphicon-pencil"></span>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to wiki, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <span class="glyphicon glyphicon-trash"></span>
+                <% end %>
+              </td>
+            <% end %>
           </tr>
         <% end %>
     </table>

@@ -1,7 +1,3 @@
-<% @array = [] %>
-<% @wiki.collaborators.each do |c| %>
-  <% @array << c.user.id %>
-<% end %>
 <%= render 'form' %>
 <%= link_to 'Show', @wiki %> |
 <%= link_to 'Back', wikis_path %>

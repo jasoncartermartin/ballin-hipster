@@ -1,11 +1,3 @@
-<%
-  @created_by = ""
-  if @wiki.user
-    @created_by = @wiki.user.email
-  else
-    @created_by = current_user.email
-  end
-%>
 <div class="row">
   <div class="col-md-12">
     <%= form_for(@wiki) do |f| %>
@@ -33,21 +25,17 @@
         <%= f.label :private %>: <%= f.check_box :private %>
       </div>
       <div class="field">
-        <%= f.label :image %><br>
-        <%= f.text_field :image %>
-      </div>
-      <div class="field">
-        Created by: <i><%= @created_by %></i>
+        Created by: <i><%= @created_by.email %></i>
       </div>
   </div>
 </div>
 <div class = "row">
   <div class = "col-md-12">
     <h4><u>Collaborators</u></h4>
-      <%= f.select :collab_list, User.all.map { |u| [u.email, u.id] }, { include_blank: true, selected: @array }, { class: 'chosen-select', multiple: true } %>
+      <%= f.select :collab_list, User.all.map { |u| [u.email, u.id] }, { include_blank: true, selected: @currentCollaborators, disabled: @created_by.id }, { class: 'chosen-select', multiple: true } %>
     <br /><br />
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit class: "btn btn-primary btn-large" %>
     </div>
     <br />
    <% end %>
