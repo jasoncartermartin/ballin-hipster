@@ -31,14 +31,17 @@ textarea {
   color: white !important;
 }
 
-.white-text > a {
+.white-text > a:link {
   color: white !important;
 }
 
-.white-text {
-  color: white !important;
+.white-text > a:hover {
+  color: red !important;
 }
 
+.white-text > a:active {
+  color: white !important;
+}
 
 .white-text > li > a {
   color: white !important;
