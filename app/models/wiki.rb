@@ -5,7 +5,9 @@ class Wiki < ActiveRecord::Base
 
   belongs_to :user
   has_many :collaborators
-  #has_and_belongs_to_many :collaborators, model: 'User', foreign_key:
+  
+  validates :title, length: { minimum: 3 }, presence: true, uniqueness: true
+  validates :body, length: { minimum: 20 }, presence: true
 
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :collaborators

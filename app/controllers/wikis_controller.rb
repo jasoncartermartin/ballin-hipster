@@ -10,6 +10,8 @@ class WikisController < ApplicationController
   def show
 
     @wiki = Wiki.friendly.find(params[:id])
+
+    @created_by = @wiki.user || current_user
     
     if request.path != wiki_path(@wiki)
       redirect_to @wiki, status: :moved_permanently
@@ -35,12 +37,7 @@ class WikisController < ApplicationController
 
     authorize @wiki
   
-    @created_by
-    if @wiki.user
-      @created_by = @wiki.user
-    else
-      @created_by = current_user
-    end
+    @created_by = @wiki.user || current_user
 
     @currentCollaborators = []
     
@@ -61,6 +58,7 @@ class WikisController < ApplicationController
     
     @wiki = Wiki.new(wiki_params)
     @wiki.user_id = current_user.id
+    @created_by = @wiki.user
 
     respond_to do |format|
       if @wiki.save
@@ -80,7 +78,7 @@ class WikisController < ApplicationController
         format.json { render action: 'show', status: :created, location: @wiki }
 
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'new', notice: "Errors" }
         format.json { render json: @wiki.errors, status: :unprocessable_entity }
       end
     end
@@ -90,6 +88,8 @@ class WikisController < ApplicationController
   def update
 
     authorize @wiki
+
+    @created_by = @wiki.user || current_user
 
     ## Custom code (collab_list) needed to support chosen multi-select dropdown with nested model
 
