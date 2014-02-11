@@ -47,10 +47,6 @@ textarea {
   color: white !important;
 }
 
-.alert {
-  background-color: blue;
-}
-
 .alert-error {
   background-color: red;
   font-weight: bold;
