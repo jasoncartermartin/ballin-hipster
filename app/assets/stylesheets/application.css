@@ -11,8 +11,8 @@
  *= require_self
  *= require chosen
  *= require bootstrap
- *= require bootstrap_custom
  *= require scaffolds
  *= require skeuocard.reset
  *= require skeuocard
+ *= require bootstrap_custom
  */
