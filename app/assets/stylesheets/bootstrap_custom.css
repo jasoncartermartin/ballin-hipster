@@ -35,6 +35,11 @@ textarea {
   color: white !important;
 }
 
+.white-text {
+  color: white !important;
+}
+
+
 .white-text > li > a {
   color: white !important;
 }
