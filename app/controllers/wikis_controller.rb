@@ -30,7 +30,6 @@ class WikisController < ApplicationController
     @wiki.user_id = current_user.id
     @created_by = @wiki.user
 
-
   end
 
   def edit

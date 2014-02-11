@@ -1,7 +1,5 @@
 class CollaboratorsController < ApplicationController
   def create
-    #@collaborator = User.find(:collaborator[params[:user_id]])
-    #@wiki = Wiki.find(params[:collaborator[:wiki_id]])
     @user = User.find(params[:collaborator][:user_id])
     @wiki = Wiki.find(params[:collaborator][:wiki_id])
 
