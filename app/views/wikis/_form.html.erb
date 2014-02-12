@@ -27,7 +27,7 @@
           <%= f.check_box :private %>
         <% else %>
           <%= f.check_box :private, disabled: true %>
-          <%= f.hidden_field :private, false %>
+          <%= f.hidden_field :private, value: false %>
         <% end %>
       </div>      
       <div class="field">
