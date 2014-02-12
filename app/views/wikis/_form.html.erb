@@ -21,11 +21,14 @@
       <div class="field" style="display:none">
         <%= f.text_area :body, id: :wiki_body %>
       </div>
-      <% if current_user && current_user.premium? %>
-        <div class="field">
-          <%= f.label :private %>: <%= f.check_box :private %>
-        </div>
-      <% end %>
+      <div class="field">
+        <%= f.label :private %>: 
+        <% if current_user && current_user.premium? %>    
+          <%= f.check_box :private %>
+        <% else %>
+          <%= f.check_box :private, disabled: true %>
+        <% end %>
+      </div>      
       <div class="field">
         Created by: <i><%= @created_by.email %></i>
       </div>
